@@ -33,7 +33,65 @@ export async function getMovieById(id) {
       },
     };
     const response = await axios(config);
-    console.log(response.data);
+    // console.log(response.data);
+    // console.log(response.data.totalHits);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMovieCredits(id) {
+  const endpoint = `/movie/${id}/credits`;
+  try {
+    const config = {
+      method: 'GET',
+      url: BASE_URL + endpoint,
+      params: {
+        api_key: API_KEY,
+      },
+    };
+    const response = await axios(config);
+    // console.log(response.data);
+    // console.log(response.data.totalHits);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMovieReviews(id) {
+  const endpoint = `/movie/${id}/reviews`;
+  try {
+    const config = {
+      method: 'GET',
+      url: BASE_URL + endpoint,
+      params: {
+        api_key: API_KEY,
+      },
+    };
+    const response = await axios(config);
+    // console.log(response.data);
+    // console.log(response.data.totalHits);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMovieByQuery(query) {
+  const endpoint = `/search/movie`;
+  try {
+    const config = {
+      method: 'GET',
+      url: BASE_URL + endpoint,
+      params: {
+        api_key: API_KEY,
+        query,
+      },
+    };
+    const response = await axios(config);
+    // console.log(response.data);
     // console.log(response.data.totalHits);
     return response.data;
   } catch (error) {

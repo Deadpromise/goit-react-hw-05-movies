@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getTrendingMovie } from '../../services/tmdb-api';
 
 const Home = () => {
@@ -14,10 +15,10 @@ const Home = () => {
         console.log('Fetch error');
       });
   }, []);
-  console.log(results);
+  //   console.log(results);
   return (
     <div>
-      Homepage
+      <h1>Trending today</h1>
       <ul>
         {results.map(({ id, title }) => {
           return (
@@ -32,5 +33,8 @@ const Home = () => {
     </div>
   );
 };
-
+Home.propTypes = {
+  location: PropTypes.shape({}),
+  results: PropTypes.arrayOf(PropTypes.shape({})),
+};
 export default Home;

@@ -1,12 +1,17 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { StyledLink } from './Layout.styled';
+import {
+  HeadContainer,
+  Header,
+  StyledLink,
+  MainContainer,
+} from './Layout.styled';
 
 export const Layout = () => {
   return (
-    <>
-      <header>
+    <HeadContainer>
+      <Header>
         <ul>
           <li>
             <StyledLink to="/">Home</StyledLink>
@@ -15,12 +20,15 @@ export const Layout = () => {
             <StyledLink to="/movies">Movies</StyledLink>
           </li>
         </ul>
-      </header>
+      </Header>
       <main>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
+        <MainContainer>
+          {' '}
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
+        </MainContainer>
       </main>
-    </>
+    </HeadContainer>
   );
 };
